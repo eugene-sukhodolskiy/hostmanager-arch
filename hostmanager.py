@@ -30,6 +30,12 @@ def create_host(host_name):
         ServerAdmin admin@localhost
         DocumentRoot {host_path}
         ServerName {host_name}
+        
+        <Directory "/srv/http/olaf.local">
+            AllowOverride All
+            Require all granted
+        </Directory>
+        
         ErrorLog /var/log/httpd/{host_name}-error.log
         CustomLog /var/log/httpd/{host_name}-access.log combined
     </VirtualHost>
