@@ -26,12 +26,12 @@ def create_host(host_name):
     os.system(f'chmod -R 755 {host_path}')
 
     apache_config = f"""
-    <VirtualHost *:80>
-        ServerAdmin admin@localhost
+    <VirtualHost {host_name}:80>
+        ServerAdmin admin@{host_name}
         DocumentRoot {host_path}
         ServerName {host_name}
         
-        <Directory "/srv/http/olaf.local">
+        <Directory "/srv/http/{host_name}">
             AllowOverride All
             Require all granted
         </Directory>
